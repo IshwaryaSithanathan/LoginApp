@@ -1,6 +1,6 @@
 # Node.js Loginapp
 
-This is a user login and registration app using Node.js, Express, Passport and Mongoose. It is part of the YouTube series [here](https://www.youtube.com/watch?v=Z1ktxiqyiLA)
+This is a user login and registration app using Node.js, Express, Passport, Authy, Twilio and Mongoose. 
 
 ### Version
 1.1.0
