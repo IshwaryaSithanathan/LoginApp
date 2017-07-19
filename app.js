@@ -1,3 +1,5 @@
+"use strict";
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -10,13 +12,14 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+var helpers = require('handlebars-helpers')();
 
 mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var hbs = require('hbs');
 // Init App
 var app = express();
 

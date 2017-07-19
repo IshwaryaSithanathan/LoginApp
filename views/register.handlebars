@@ -1,29 +1,85 @@
-<h2 class="page-header">Register</h2>
+{{#if edit}}
+  <h2 class="page-header">Edit</h2>
+{{/if}}
+{{#else}}
+  <h2 class="page-header">Register</h2>
+{{/else}}
 {{#if errors}}
       {{#each errors}}
         <div class="alert alert-danger">{{msg}}</div>
       {{/each}}
 {{/if}}
+{{#if edit}}
+<input type="hidden" name="isEdit" value="true">
+{{/if}}
+{{#else}}
+<input type="hidden" name="isEdit" value="false">
+{{/else}}
 <form method="post" action="/users/register">
    <div class="form-group">
     <label>Name</label>
-    <input type="text" class="form-control" placeholder="Name" name="name">
+    {{#if edit}}
+    <input type="text" class="form-control" value="{{user.name}}" placeholder="Name" name="name" required="required">
   </div>
+  <label>Username</label>
   <div class="form-group">
-    <label>Username</label>
-    <input type="text" class="form-control" placeholder="Username" name="username">
-  </div>
+    {{#if edit}}
+      <input type="text" readonly class="form-control col-sm-2" value="{{user.countryCode}}" style="width: 10%;" placeholder="Country Code" name="countryCode" required="required">
+      <input type="text" readonly class="form-control" value="{{user.username}}" style="width: 90%;" placeholder="Phone number" name="username" required="required">
+    {{/if}}
+    {{#else}}
+      <input type="text" class="form-control col-sm-2" value="{{user.countryCode}}" style="width: 10%;" placeholder="Country Code" name="countryCode" required="required">
+       <input type="text" class="form-control" value="{{user.username}}" style="width: 90%;" placeholder="Phone number" name="username" required="required">
+    {{/else}}
+   </div>
    <div class="form-group">
     <label>Email</label>
-    <input type="email" class="form-control" placeholder="Email" name="email">
+    {{#if edit}}
+      <input type="text" readonly class="form-control" value="{{user.email}}" placeholder="Email" name="email" required="required">
+    {{/if}}
+    {{#else}}
+      <input type="text" class="form-control" value="{{user.email}}" placeholder="Email" name="email" required="required">
+    {{/else}}
   </div>
   <div class="form-group">
-    <label>Password</label>
-    <input type="password" class="form-control" placeholder="Password" name="password">
+    <label>Photo</label>
+    <form action="/users/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="image"> 
+  </form>
   </div>
   <div class="form-group">
-    <label>Confirm Password</label>
-    <input type="password" class="form-control" placeholder="Password" name="password2">
+    <label>Date of Birth</label>
+    <input type="Date" class="form-control" value="{{userInfo.dob}}" placeholder="DD/MM/YYYY" name="dob" required="required">
   </div>
-  <button type="submit" class="btn btn-default">Submit</button>
+  <div class="form-group">
+  <label>Gender</label>
+    {{#if edit}}
+      {{userInfo.gender}}
+    {{/if}}
+    {{#else}}
+      <select id="gender" value="{{userInfo.gender}}" name="gender" class="form-control">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    {{/else}}
+  
+  </div>
+  <div class="form-group">
+    <label>Address</label>
+    <textarea id="address" class="form-control" value="{{userInfo.address}}" name="address" cols="36" rows="5" required="required"></textarea>
+  </div>
+  {{#if edit}}
+  {{/if}}
+  {{#else}}
+      <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" placeholder="Password" name="password" required="required">
+    </div>
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password" class="form-control" placeholder="Password" name="password2" required="required">
+    </div>
+  {{/else}}
+  <button type="submit" class="btn btn-default">Save</button>
 </form>

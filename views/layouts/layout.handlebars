@@ -10,8 +10,8 @@
       <div class="header clearfix">
         <nav>
           <ul class="nav nav-pills pull-right">
-            {{#if user}}
-              <li role="presentation"><a href="/">Dashboard</a></li>
+            {{#if users}}
+              <li role="presentation"><a href="/users/userList">Dashboard</a></li>
               <li role="presentation"><a href="/users/logout">Logout</a></li>
             {{else}}
               <li role="presentation"><a href="/users/login">Login</a></li>
@@ -42,10 +42,6 @@
 
         
       </div>
-
-      <footer class="footer">
-        <p>&copy; 2015 LoginApp, Inc.</p>
-      </footer>
 
     </div> <!-- /container -->
 </body>

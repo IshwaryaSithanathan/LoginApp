@@ -1,15 +1,16 @@
 {
-  "name": "loginapp",
+  "name": "LoginApp",
   "version": "1.0.0",
-  "description": "Simple authentication system",
+  "description": "Simple Login Application",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Brad Traversy",
-  "license": "ISC",
+  "author": "Ishwarya",
   "dependencies": {
+    "assemble": "^0.24.3",
+    "authy": "^1.2.0",
     "bcryptjs": "*",
     "body-parser": "*",
     "connect-flash": "*",
@@ -19,10 +20,22 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "formidable": "^1.1.1",
+    "handlebars-dateformat": "^1.0.1",
+    "handlebars-helpers": "^0.9.3",
+    "hbs": "^4.0.1",
+    "intl-tel-input": "^11.1.2",
+    "jwt-simple": "^0.5.1",
     "mongodb": "*",
     "mongoose": "*",
+    "multer": "^1.3.0",
     "passport": "*",
     "passport-http": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "password-validator": "^4.0.0",
+    "twilio": "^3.5.0"
+  },
+  "devDependencies": {
+    "handlebars-helper-moment": "^0.2.0"
   }
 }

@@ -1,0 +1,41 @@
+<h2 class="page-header">User List</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Photo</th>
+      <th>Date of Birth</th>
+      <th>Address</th>
+      <th>Call</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#if users}}
+      {{#users}} 
+      <tr>
+        <form>
+        <td id="name">{{name}}</td>
+        <td>+{{countryCode}}{{username}}</td>
+        <td>{{email}}</td>
+        <td>{{photo}}</td>
+        <td id="dob">{{info.0.dob}}</td>
+        <td id="address">{{info.0.address}}</td>
+        <td><form><button type="submit" name="phoneNumber" formmethod="post" formaction="/users/call" value="+{{countryCode}}{{username}}" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-earphone"></span> Call
+        </button></form></td>
+        <td><form><button type="button" formmethod="post" formaction="/users/edit"  value="{{username}}" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-pencil"></span> Edit 
+        </button></form></td>
+        <td><form><button type="button" formmethod="post" formaction="/users/delete"  value="{{username}}" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-trash"></span> Delete 
+        </button></form></td>
+        </form>
+      </tr>
+      {{/users}}
+    {{/if}}
+  </tbody>
+</table>
