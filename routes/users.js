@@ -311,6 +311,7 @@ router.post('/call', function(request, response) {
 	})
 	})
 	router.post('/delete', function(request, response) {
-		
+		User.remove({username:request.body.username});
+		UserInfo.remove({name:request.body.username});
 	})
 module.exports = router;
